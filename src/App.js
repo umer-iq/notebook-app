@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Notestate from "./context/notes/Notestate";
+import { Alert } from "./components/Alert";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Notestate>
       <header>
         <Navbar />
+        <Alert message="this is an test of alert message"/>
       </header>
 <div className="container">
       <Routes>
