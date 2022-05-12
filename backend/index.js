@@ -5,6 +5,7 @@ var cors = require("cors");
 const app = express();
 const port = 5002;
 
+
 app.use(cors());
 app.use(express.json());
 //Available routes
