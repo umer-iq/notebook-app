@@ -31,13 +31,13 @@ export const Notestate = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI3NWRkYzhmYjA3NTg0NmM2YTUyMjUyIn0sImlhdCI6MTY1MTg5MzUzMH0.TJvcOOeo_gyt-EN6WgxJ8c2HK4QcOLDvjv5aAvkhHQk",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI3NWRkYzhmYjA3NTg0NmM2YTUyMjUyIn0sImlhdCI6MTY1MTg5MzUzMH0.TJvcOOeo_gyt-EN6WgxJ8c2HK4QcOLDvjv5aAvkhHQk"
       },
 
-     body: JSON.stringify(title, description, tag),
+     body: JSON.stringify({title, description, tag}),
     });
-    const json = await response.json();
-    console.log(json)
+    const note = await response.json();
+    setNotes(notes.concat(note))
 
     
   };
@@ -70,17 +70,17 @@ export const Notestate = (props) => {
 
       headers: {
         "Content-Type": "application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI3NWRkYzhmYjA3NTg0NmM2YTUyMjUyIn0sImlhdCI6MTY1MTg5MzUzMH0.TJvcOOeo_gyt-EN6WgxJ8c2HK4QcOLDvjv5aAvkhHQk",
+        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI3NWRkYzhmYjA3NTg0NmM2YTUyMjUyIn0sImlhdCI6MTY1MTg5MzUzMH0.TJvcOOeo_gyt-EN6WgxJ8c2HK4QcOLDvjv5aAvkhHQk"
       },
 
-      body: JSON.stringify(title, description, tag),
+    body: JSON.stringify({title, description, tag}),
     });
     const json = await response.json();
-    console.log(json)
+     console.log(json)
   
     let newNotes = JSON.parse(JSON.stringify(notes))
     for (let index = 0; index < newNotes.length; index++) {
-      const element = notes[index];
+      const element = newNotes[index];
       if (element._id === id) {
         newNotes[index].title = title;
         newNotes[index].description = description;
